@@ -1,5 +1,5 @@
-﻿/**
- * STUDYPET â€” Master Application Controller & Router
+/**
+ * STUDYPET — Master Application Controller & Router
  * Enhanced Retro 90s OS & Pixel Art Sanctuary Edition
  * Features:
  * - Real-Time Dynamic Day / Sunset / Night Window Sky
@@ -97,10 +97,10 @@ class StudyPetApp {
         const streakEl = document.getElementById('top-bar-streak');
         const soundBtn = document.getElementById('header-sound-btn');
 
-        if (coinsEl) coinsEl.textContent = `${user.coins || 0} ðŸª™`;
+        if (coinsEl) coinsEl.textContent = `${user.coins || 0} 🪙`;
         if (streakEl) streakEl.textContent = `${user.streak || 0} 🔥`;
         if (soundBtn) {
-            soundBtn.textContent = user.soundEnabled ? 'ðŸ””' : 'ðŸ”•';
+            soundBtn.textContent = user.soundEnabled ? '🔔' : '🔕';
         }
     }
 
@@ -198,7 +198,7 @@ class StudyPetApp {
           </div>
           <div class="retro-os-controls">
             <button class="retro-os-btn" onclick="window.app.toggleSanctuaryCollapse()" title="Minimize">_</button>
-            <button class="retro-os-btn" onclick="window.studyTimer.toggleFocusLock()" title="Maximize">â–¡</button>
+            <button class="retro-os-btn" onclick="window.studyTimer.toggleFocusLock()" title="Maximize">□</button>
             <button class="retro-os-btn" onclick="window.app.showCoffeeMiniGame()" title="Take a Coffee Break">☕</button>
           </div>
         </div>
@@ -219,16 +219,16 @@ class StudyPetApp {
           <!-- Left MS Paint-style Tool Palette -->
           <div class="retro-paint-toolbox">
             <div class="retro-tools-grid">
-              <div class="retro-tool-btn active" title="Pointer" onclick="window.soundEngine.playClick()">â†–</div>
-              <div class="retro-tool-btn" title="Add Task" onclick="window.app.showAddTaskModal()">âœï¸</div>
-              <div class="retro-tool-btn" title="Pet Shop" onclick="window.app.navigateTo('shop')">ðŸª£</div>
-              <div class="retro-tool-btn" title="Color Picker" onclick="window.app.navigateTo('pet-evolution')">ðŸŽ¨</div>
-              <div class="retro-tool-btn" title="Statistics" onclick="window.app.navigateTo('statistics')">ðŸ”</div>
-              <div class="retro-tool-btn" title="Clean Sanctuary" onclick="window.petManager.cleanPet()">ðŸ«§</div>
+              <div class="retro-tool-btn active" title="Pointer" onclick="window.soundEngine.playClick()">↖</div>
+              <div class="retro-tool-btn" title="Add Task" onclick="window.app.showAddTaskModal()">✏️</div>
+              <div class="retro-tool-btn" title="Pet Shop" onclick="window.app.navigateTo('shop')">🪣</div>
+              <div class="retro-tool-btn" title="Color Picker" onclick="window.app.navigateTo('pet-evolution')">🎨</div>
+              <div class="retro-tool-btn" title="Statistics" onclick="window.app.navigateTo('statistics')">🔍</div>
+              <div class="retro-tool-btn" title="Clean Sanctuary" onclick="window.petManager.cleanPet()">🫧</div>
               <div class="retro-tool-btn" title="Brew Coffee Mini-Game" onclick="window.app.showCoffeeMiniGame()">☕</div>
-              <div class="retro-tool-btn" title="Notebook" onclick="window.app.navigateTo('future-me')">ðŸ““</div>
-              <div class="retro-tool-btn" title="Play Toy" onclick="window.petManager.playWithPet()">ðŸŽ¾</div>
-              <div class="retro-tool-btn" title="Focus Timer" onclick="window.app.navigateTo('study-room')">â±ï¸</div>
+              <div class="retro-tool-btn" title="Notebook" onclick="window.app.navigateTo('future-me')">📓</div>
+              <div class="retro-tool-btn" title="Play Toy" onclick="window.petManager.playWithPet()">🎾</div>
+              <div class="retro-tool-btn" title="Focus Timer" onclick="window.app.navigateTo('study-room')">⏱️</div>
             </div>
             <div class="retro-tool-rainbow" title="Color Spectrum"></div>
             <div class="retro-brush-sizes">
@@ -269,7 +269,7 @@ class StudyPetApp {
               <div class="pixel-rainbow-strip"></div>
 
               <!-- Potted Desk Succulent -->
-              <div class="pixel-desk-plant" onclick="window.petManager.say('green leaves drink sunlight!\ndon\'t forget your water! ðŸŒ¿')" title="Water plant">
+              <div class="pixel-desk-plant" onclick="window.petManager.say('green leaves drink sunlight!\ndon\'t forget your water! 🌿')" title="Water plant">
                 <svg width="48" height="62" viewBox="0 0 48 62">
                   <polygon points="8,32 40,32 34,60 14,60" fill="#6B5B7B" stroke="#000" stroke-width="2"/>
                   <path d="M24,32 C14,20 10,8 24,2 C38,8 34,20 24,32 Z" fill="#2E7D32" stroke="#000" stroke-width="2"/>
@@ -350,7 +350,7 @@ rest your eyes
                 <span>💾</span> SAVE
               </div>
               <div class="retro-rpg-menu-item" onclick="window.app.navigateTo('settings')">
-                <span>–¥ï¸</span> SYSTEM
+                <span>🖥️</span> SYSTEM
               </div>
               <div class="retro-rpg-menu-item" onclick="window.app.showCoffeeMiniGame()">
                 <span>☕</span> BREAK
@@ -364,7 +364,7 @@ rest your eyes
           <div style="display: flex; align-items: center; gap: 8px;">
             <span title="Eraser count">🧹 0</span>
             <div class="retro-swatches-row">
-              <div style="font-size: 10px; cursor: pointer;" onclick="window.petManager.say('smile! you are doing great! :3')">ðŸ™‚</div>
+              <div style="font-size: 10px; cursor: pointer;" onclick="window.petManager.say('smile! you are doing great! :3')">🙂</div>
               <div class="retro-color-chip" style="background:#FF6B6B;" onclick="window.app.changeAccentColor('#FF6B6B')"></div>
               <div class="retro-color-chip" style="background:#FFD93D;" onclick="window.app.changeAccentColor('#FFD93D')"></div>
               <div class="retro-color-chip" style="background:#6BCB77;" onclick="window.app.changeAccentColor('#6BCB77')"></div>
@@ -418,17 +418,17 @@ rest your eyes
         <!-- Layer 1: Weather Layer (Rain / Fire / None) -->
         <div style="margin-bottom: 10px;">
           <div style="font-family:'Press Start 2P'; font-size:0.62rem; color:#374151; margin-bottom: 6px;">
-            ðŸŒ§ï¸ AMBIENT WEATHER LAYER:
+            🌧️ AMBIENT WEATHER LAYER:
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button class="soundtrack-btn ${weather === 'rain' ? 'active' : ''}" onclick="window.app.setWeatherLayer('rain')">
-              ðŸŒ§ï¸ Rain on Glass
+              🌧️ Rain on Glass
             </button>
             <button class="soundtrack-btn ${weather === 'fire' ? 'active' : ''}" onclick="window.app.setWeatherLayer('fire')">
               🔥 Cozy Campfire
             </button>
             <button class="soundtrack-btn ${weather === 'none' ? 'active' : ''}" onclick="window.app.setWeatherLayer('none')">
-              â›” No Weather
+              ⛔ No Weather
             </button>
           </div>
         </div>
@@ -436,26 +436,26 @@ rest your eyes
         <!-- Layer 2: Music & Noise Layer -->
         <div>
           <div style="font-family:'Press Start 2P'; font-size:0.62rem; color:#374151; margin-bottom: 6px;">
-            ðŸŽ§ MUSIC & FOCUS NOISE LAYER:
+            🎧 MUSIC & FOCUS NOISE LAYER:
           </div>
           <div class="soundtrack-tracks-grid">
             <button class="soundtrack-btn ${music === 'lofi' ? 'active' : ''}" onclick="window.app.setMusicLayer('lofi')">
-              ðŸŽ§ Lo-Fi Beats
+              🎧 Lo-Fi Beats
             </button>
             <button class="soundtrack-btn ${music === 'piano' ? 'active' : ''}" onclick="window.app.setMusicLayer('piano')">
-              ðŸŽ¹ Piano Arpeggios
+              🎹 Piano Arpeggios
             </button>
             <button class="soundtrack-btn ${music === 'brown' ? 'active' : ''}" onclick="window.app.setMusicLayer('brown')">
-              ðŸŸ¤ Brown Noise
+              🟤 Brown Noise
             </button>
             <button class="soundtrack-btn ${music === 'pink' ? 'active' : ''}" onclick="window.app.setMusicLayer('pink')">
-              ðŸŒ¸ Pink Noise
+              🌸 Pink Noise
             </button>
             <button class="soundtrack-btn ${music === 'videogame' ? 'active' : ''}" onclick="window.app.setMusicLayer('videogame')">
-              ðŸŽ® Retro Games OST
+              🎮 Retro Games OST
             </button>
             <button class="soundtrack-btn ${music === 'none' ? 'active' : ''}" onclick="window.app.setMusicLayer('none')">
-              ðŸ”• Mute Music
+              🔕 Mute Music
             </button>
           </div>
         </div>
@@ -467,12 +467,12 @@ rest your eyes
           <!-- QUICK ACTIONS STRIP -->
           <div class="card">
             <div class="card-header" style="margin-bottom: 14px;">
-              <div class="card-title"><span class="card-title-icon">âš¡</span> Quick Actions</div>
+              <div class="card-title"><span class="card-title-icon">⚡</span> Quick Actions</div>
               <span style="font-size: 0.8rem; font-weight: 600; color: var(--color-muted-text);">${new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</span>
             </div>
             <div class="quick-actions-bar">
               <div class="quick-action-card" onclick="window.app.navigateTo('study-room')">
-                <span class="quick-action-icon">â±ï¸</span>
+                <span class="quick-action-icon">⏱️</span>
                 <span class="quick-action-label">Start Study</span>
               </div>
               <div class="quick-action-card" onclick="window.app.showAddTaskModal()">
@@ -480,15 +480,15 @@ rest your eyes
                 <span class="quick-action-label">Add Task</span>
               </div>
               <div class="quick-action-card" onclick="window.app.navigateTo('planner')">
-                <span class="quick-action-icon">ðŸ“…</span>
+                <span class="quick-action-icon">📅</span>
                 <span class="quick-action-label">Planner</span>
               </div>
               <div class="quick-action-card" onclick="window.app.navigateTo('future-me')">
-                <span class="quick-action-icon">ðŸ’Œ</span>
+                <span class="quick-action-icon">💌</span>
                 <span class="quick-action-label">Future Me</span>
               </div>
               <div class="quick-action-card" onclick="window.app.navigateTo('shop')">
-                <span class="quick-action-icon">ðŸ›ï¸</span>
+                <span class="quick-action-icon">🛍️</span>
                 <span class="quick-action-label">Pet Shop</span>
               </div>
             </div>
@@ -497,14 +497,14 @@ rest your eyes
           <!-- TODAY'S DAILY PROGRESS STRIP -->
           <div class="stats-summary-strip">
             <div class="stat-box">
-              <div class="stat-icon-wrapper stat-icon-time">â±ï¸</div>
+              <div class="stat-icon-wrapper stat-icon-time">⏱️</div>
               <div class="stat-content">
                 <div class="stat-val">${user.todayMinutes || 0}m</div>
                 <div class="stat-lbl">Study Time Today</div>
               </div>
             </div>
             <div class="stat-box">
-              <div class="stat-icon-wrapper stat-icon-tasks">ðŸŽ¯</div>
+              <div class="stat-icon-wrapper stat-icon-tasks">🎯</div>
               <div class="stat-content">
                 <div class="stat-val">${user.todayCompletedTasks || 0}</div>
                 <div class="stat-lbl">Tasks Finished</div>
@@ -518,7 +518,7 @@ rest your eyes
               </div>
             </div>
             <div class="stat-box">
-              <div class="stat-icon-wrapper stat-icon-exp">ðŸª™</div>
+              <div class="stat-icon-wrapper stat-icon-exp">🪙</div>
               <div class="stat-content">
                 <div class="stat-val">+${user.todayCoinsEarned || 0}</div>
                 <div class="stat-lbl">Coins Earned Today</div>
@@ -554,7 +554,7 @@ rest your eyes
                     <div style="font-size: 0.72rem; color: var(--color-muted-text);">${user.todayCompletedTasks || 0} / 2 done</div>
                   </div>
                 </div>
-                <span class="goal-reward-badge">+20 ðŸª™</span>
+                <span class="goal-reward-badge">+20 🪙</span>
               </div>
 
               <div class="goal-item completed">
@@ -573,7 +573,7 @@ rest your eyes
           <!-- UPCOMING DEADLINES -->
           <div class="card">
             <div class="card-header">
-              <div class="card-title"><span class="card-title-icon">â³</span> Upcoming Deadlines</div>
+              <div class="card-title"><span class="card-title-icon">⏳</span> Upcoming Deadlines</div>
               <button class="btn btn-outline btn-sm" onclick="window.app.navigateTo('planner')">View All</button>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -585,7 +585,7 @@ rest your eyes
                   </div>
                   <div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 0.76rem; color: var(--color-muted-text);">
                     <span>${t.subject}</span>
-                    <span style="font-family: var(--font-mono); font-weight: 700;">ðŸ“… ${t.deadline ? t.deadline.split('T')[0] : 'No date'}</span>
+                    <span style="font-family: var(--font-mono); font-weight: 700;">📅 ${t.deadline ? t.deadline.split('T')[0] : 'No date'}</span>
                   </div>
                 </div>
               `).join('')}
@@ -608,7 +608,7 @@ rest your eyes
             rainBox.classList.toggle('active', type === 'rain');
         }
         this.renderCurrentView();
-        this.showToast('Weather Layer', type === 'rain' ? 'Rain on Glass ðŸŒ§ï¸' : type === 'fire' ? 'Campfire Hearth 🔥' : 'Weather Muted', 'exp');
+        this.showToast('Weather Layer', type === 'rain' ? 'Rain on Glass 🌧️' : type === 'fire' ? 'Campfire Hearth 🔥' : 'Weather Muted', 'exp');
     }
 
     setMusicLayer(track) {
@@ -638,7 +638,7 @@ rest your eyes
         const cycle = { day: 'sunset', sunset: 'night', night: 'day' };
         this.timeOfDay = cycle[this.timeOfDay];
         this.renderCurrentView();
-        this.showToast('Sky Lighting', `Window shifted to ${this.timeOfDay.toUpperCase()} ðŸŒ™â˜€ï¸`, 'achievement');
+        this.showToast('Sky Lighting', `Window shifted to ${this.timeOfDay.toUpperCase()} 🌙☀️`, 'achievement');
     }
 
     changeAccentColor(colorHex) {
@@ -680,7 +680,7 @@ rest your eyes
         starCoords.forEach((coord, i) => {
             const s = document.createElement('div');
             s.className = 'pixel-star';
-            s.textContent = 'âœ¦';
+            s.textContent = '✦';
             s.style.left = `${coord.x}px`;
             s.style.top = `${coord.y}px`;
             s.style.animationDelay = `${(i * 0.3).toFixed(1)}s`;
@@ -725,7 +725,7 @@ rest your eyes
         </div>
         <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
           <button class="btn btn-gold btn-sm" onclick="document.getElementById('sticky-note-modal').classList.remove('active'); window.petManager.petCreature();">
-            Pet Companion â¤ï¸
+            Pet Companion ❤️
           </button>
         </div>
       </div>
@@ -744,7 +744,7 @@ rest your eyes
           <button class="modal-close-btn" style="color:#00FFAA;" onclick="document.getElementById('crt-terminal-modal').classList.remove('active');">✕</button>
         </div>
         <div style="padding: 20px 0;">
-          <div style="font-size: 2.5rem; margin-bottom: 12px;">🐱 ðŸ’» ✨</div>
+          <div style="font-size: 2.5rem; margin-bottom: 12px;">🐱 💻 ✨</div>
           <p style="font-size: 0.72rem; line-height: 1.8;">
             SYSTEM STATUS: ALL GOOD<br>
             COZY LEVEL: 100%<br>
@@ -753,7 +753,7 @@ rest your eyes
           </p>
           <div style="margin-top: 20px;">
             <button class="btn btn-primary btn-sm" onclick="window.soundEngine.playCoin(); document.getElementById('crt-terminal-modal').classList.remove('active'); window.studyTimer.startTimer(); window.app.navigateTo('study-room');">
-              RUN FOCUS_TIMER.EXE â–¶ï¸
+              RUN FOCUS_TIMER.EXE ▶️
             </button>
           </div>
         </div>
@@ -791,7 +791,7 @@ rest your eyes
 
         <div class="coffee-choice-grid">
           <button class="coffee-choice-btn selected" onclick="window.app.selectDrink('matcha', this)">
-            <span style="font-size: 1.5rem;">ðŸµ</span>
+            <span style="font-size: 1.5rem;">🍵</span>
             <span>Matcha Latte</span>
           </button>
           <button class="coffee-choice-btn" onclick="window.app.selectDrink('coffee', this)">
@@ -799,13 +799,13 @@ rest your eyes
             <span>Dark Roast</span>
           </button>
           <button class="coffee-choice-btn" onclick="window.app.selectDrink('boba', this)">
-            <span style="font-size: 1.5rem;">ðŸ§‹</span>
+            <span style="font-size: 1.5rem;">🧋</span>
             <span>Warm Chai</span>
           </button>
         </div>
 
         <button class="btn btn-gold btn-lg" style="width: 100%; margin-top: 10px;" onclick="window.app.finishBrewDrink()">
-          Pour Drink & Share with Companion (+15 ðŸª™, +20 Joy) ✨
+          Pour Drink & Share with Companion (+15 🪙, +20 Joy) ✨
         </button>
       </div>
     `;
@@ -905,16 +905,16 @@ rest your eyes
           </div>
 
           <div class="timer-controls-row">
-            <button class="timer-btn-sec" onclick="window.studyTimer.resetTimer()" title="Reset Timer">ðŸ”„</button>
-            <button class="timer-btn-main" id="timer-toggle-btn" onclick="window.studyTimer.togglePlayPause()" title="Play / Pause">â–¶ï¸</button>
-            <button class="timer-btn-sec" onclick="window.studyTimer.toggleFocusLock()" title="Focus Lock Zen Mode">ðŸ”²</button>
+            <button class="timer-btn-sec" onclick="window.studyTimer.resetTimer()" title="Reset Timer">🔄</button>
+            <button class="timer-btn-main" id="timer-toggle-btn" onclick="window.studyTimer.togglePlayPause()" title="Play / Pause">▶️</button>
+            <button class="timer-btn-sec" onclick="window.studyTimer.toggleFocusLock()" title="Focus Lock Zen Mode">🔲</button>
           </div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 20px;">
           <div class="card">
             <div class="card-header">
-              <div class="card-title"><span class="card-title-icon">ðŸ“š</span> Session Focus</div>
+              <div class="card-title"><span class="card-title-icon">📚</span> Session Focus</div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 14px;">
               <div>
@@ -942,24 +942,24 @@ rest your eyes
 
           <div class="card">
             <div class="card-header">
-              <div class="card-title"><span class="card-title-icon">ðŸŽ§</span> Study Audio Controls</div>
+              <div class="card-title"><span class="card-title-icon">🎧</span> Study Audio Controls</div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
               <div>
                 <div style="font-size:0.75rem; font-weight:700; color:var(--color-muted-text); margin-bottom:4px;">WEATHER:</div>
                 <div style="display: flex; gap: 6px;">
-                  <button class="soundtrack-btn ${weather === 'rain' ? 'active' : ''}" onclick="window.app.setWeatherLayer('rain')">ðŸŒ§ï¸ Rain</button>
+                  <button class="soundtrack-btn ${weather === 'rain' ? 'active' : ''}" onclick="window.app.setWeatherLayer('rain')">🌧️ Rain</button>
                   <button class="soundtrack-btn ${weather === 'fire' ? 'active' : ''}" onclick="window.app.setWeatherLayer('fire')">🔥 Fire</button>
-                  <button class="soundtrack-btn ${weather === 'none' ? 'active' : ''}" onclick="window.app.setWeatherLayer('none')">â›” None</button>
+                  <button class="soundtrack-btn ${weather === 'none' ? 'active' : ''}" onclick="window.app.setWeatherLayer('none')">⛔ None</button>
                 </div>
               </div>
               <div>
                 <div style="font-size:0.75rem; font-weight:700; color:var(--color-muted-text); margin-bottom:4px;">MUSIC / NOISE:</div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-                  <button class="soundtrack-btn ${music === 'lofi' ? 'active' : ''}" onclick="window.app.setMusicLayer('lofi')">ðŸŽ§ Lo-Fi</button>
-                  <button class="soundtrack-btn ${music === 'piano' ? 'active' : ''}" onclick="window.app.setMusicLayer('piano')">ðŸŽ¹ Piano</button>
-                  <button class="soundtrack-btn ${music === 'brown' ? 'active' : ''}" onclick="window.app.setMusicLayer('brown')">ðŸŸ¤ Brown</button>
-                  <button class="soundtrack-btn ${music === 'videogame' ? 'active' : ''}" onclick="window.app.setMusicLayer('videogame')">ðŸŽ® 8-Bit</button>
+                  <button class="soundtrack-btn ${music === 'lofi' ? 'active' : ''}" onclick="window.app.setMusicLayer('lofi')">🎧 Lo-Fi</button>
+                  <button class="soundtrack-btn ${music === 'piano' ? 'active' : ''}" onclick="window.app.setMusicLayer('piano')">🎹 Piano</button>
+                  <button class="soundtrack-btn ${music === 'brown' ? 'active' : ''}" onclick="window.app.setMusicLayer('brown')">🟤 Brown</button>
+                  <button class="soundtrack-btn ${music === 'videogame' ? 'active' : ''}" onclick="window.app.setMusicLayer('videogame')">🎮 8-Bit</button>
                 </div>
               </div>
             </div>
@@ -979,7 +979,7 @@ rest your eyes
         <div class="planner-top-actions">
           <div class="planner-filters-row">
             <div class="search-input-wrap">
-              <span class="search-icon">ðŸ”</span>
+              <span class="search-icon">🔍</span>
               <input type="text" placeholder="Search tasks, subjects..." value="${window.taskManager.searchQuery}" oninput="window.taskManager.searchQuery = this.value; window.app.renderCurrentView();">
             </div>
             <select onchange="window.taskManager.statusFilter = this.value; window.app.renderCurrentView();">
@@ -1003,7 +1003,7 @@ rest your eyes
             </select>
           </div>
           <div style="display: flex; gap: 10px;">
-            <button class="btn btn-outline" onclick="window.academicCalendar.showAddEventModal()">Calendar ðŸ“…</button>
+            <button class="btn btn-outline" onclick="window.academicCalendar.showAddEventModal()">Calendar 📅</button>
             <button class="btn btn-primary" onclick="window.app.showAddTaskModal()">+ Add New Task 📝</button>
           </div>
         </div>
@@ -1033,14 +1033,14 @@ rest your eyes
                   </div>
                 ` : ''}
                 <div class="task-footer">
-                  <div class="task-deadline"><span>ðŸ“… ${t.deadline ? t.deadline.split('T')[0] : 'No deadline'}</span></div>
+                  <div class="task-deadline"><span>📅 ${t.deadline ? t.deadline.split('T')[0] : 'No deadline'}</span></div>
                   <div class="task-actions">
-                    <button class="btn btn-outline btn-sm" onclick="window.taskManager.showTaskTimeline('${t.id}')">â³</button>
-                    <button class="btn btn-secondary btn-sm" onclick="window.taskManager.studyTask('${t.id}')">â±ï¸</button>
+                    <button class="btn btn-outline btn-sm" onclick="window.taskManager.showTaskTimeline('${t.id}')">⏳</button>
+                    <button class="btn btn-secondary btn-sm" onclick="window.taskManager.studyTask('${t.id}')">⏱️</button>
                     <button class="btn ${t.status === 'completed' ? 'btn-outline' : 'btn-primary'} btn-sm" onclick="window.taskManager.toggleTaskComplete('${t.id}')">
                       ${t.status === 'completed' ? '✓ Done' : 'Complete'}
                     </button>
-                    <button class="btn btn-outline btn-sm" onclick="window.taskManager.deleteTask('${t.id}')">ðŸ—‘ï¸</button>
+                    <button class="btn btn-outline btn-sm" onclick="window.taskManager.deleteTask('${t.id}')">🗑️</button>
                   </div>
                 </div>
               </div>
@@ -1092,7 +1092,7 @@ rest your eyes
 
         <div class="card">
           <div class="card-header">
-            <div class="card-title"><span class="card-title-icon">ðŸŒ³</span> Evolutionary Journey</div>
+            <div class="card-title"><span class="card-title-icon">🌳</span> Evolutionary Journey</div>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px;">
             ${stages.map((st, index) => {
@@ -1121,11 +1121,11 @@ rest your eyes
       <div>
         <div class="shop-tabs">
           <button class="shop-tab-btn ${window.shopManager.currentCategory === 'all' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'all'; window.app.renderCurrentView();">All Items</button>
-          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'food' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'food'; window.app.renderCurrentView();">Pet Food ðŸ“</button>
-          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'hat' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'hat'; window.app.renderCurrentView();">Hats & Caps ðŸŽ“</button>
-          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'clothing' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'clothing'; window.app.renderCurrentView();">Clothing ðŸ§£</button>
-          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'furniture' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'furniture'; window.app.renderCurrentView();">Decor & Furniture ðŸª´</button>
-          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'background' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'background'; window.app.renderCurrentView();">Room Themes ðŸŒŒ</button>
+          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'food' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'food'; window.app.renderCurrentView();">Pet Food 🍓</button>
+          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'hat' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'hat'; window.app.renderCurrentView();">Hats & Caps 🎓</button>
+          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'clothing' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'clothing'; window.app.renderCurrentView();">Clothing 🧣</button>
+          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'furniture' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'furniture'; window.app.renderCurrentView();">Decor & Furniture 🪴</button>
+          <button class="shop-tab-btn ${window.shopManager.currentCategory === 'background' ? 'active' : ''}" onclick="window.shopManager.currentCategory = 'background'; window.app.renderCurrentView();">Room Themes 🌌</button>
         </div>
         <div class="shop-grid">${window.shopManager.renderShopGrid()}</div>
       </div>
@@ -1136,15 +1136,15 @@ rest your eyes
         return `
       <div style="display: flex; flex-direction: column; gap: 28px;">
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-title-icon">ðŸ“œ</span> Daily Study Quests</div></div>
+          <div class="card-header"><div class="card-title"><span class="card-title-icon">📜</span> Daily Study Quests</div></div>
           <div class="quests-list">${window.questManager.renderDailyQuests()}</div>
         </div>
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-title-icon">ðŸŒŸ</span> Weekly Academic Milestones</div></div>
+          <div class="card-header"><div class="card-title"><span class="card-title-icon">🌟</span> Weekly Academic Milestones</div></div>
           <div class="quests-list">${window.questManager.renderWeeklyQuests()}</div>
         </div>
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-title-icon">ðŸ†</span> Achievements Gallery</div></div>
+          <div class="card-header"><div class="card-title"><span class="card-title-icon">🏆</span> Achievements Gallery</div></div>
           <div class="achievements-gallery">${window.questManager.renderAchievementsGallery()}</div>
         </div>
       </div>
@@ -1156,10 +1156,10 @@ rest your eyes
       <div>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
           <div>
-            <h3 style="font-size: 1.4rem; color: var(--color-forest-dark);">Letters to Future Self ðŸ’Œ</h3>
+            <h3 style="font-size: 1.4rem; color: var(--color-forest-dark);">Letters to Future Self 💌</h3>
             <p style="color: var(--color-muted-text); font-size: 0.88rem;">A digital time capsule for your thoughts, hopes, and academic goals. Sealed with wax!</p>
           </div>
-          <button class="btn btn-terracotta" onclick="window.futureMeManager.showComposeModal()">+ Write a New Letter âœ‰ï¸</button>
+          <button class="btn btn-terracotta" onclick="window.futureMeManager.showComposeModal()">+ Write a New Letter ✉️</button>
         </div>
         <div class="future-me-grid">${window.futureMeManager.renderLettersGrid()}</div>
       </div>
@@ -1173,11 +1173,11 @@ rest your eyes
       <div style="display: flex; flex-direction: column; gap: 24px;">
         <div class="stats-summary-strip">
           <div class="stat-box">
-            <div class="stat-icon-wrapper stat-icon-time">âŒ›</div>
+            <div class="stat-icon-wrapper stat-icon-time">⌛</div>
             <div class="stat-content"><div class="stat-val">${totalHours}h</div><div class="stat-lbl">Total Study Hours</div></div>
           </div>
           <div class="stat-box">
-            <div class="stat-icon-wrapper stat-icon-tasks">ðŸŽ¯</div>
+            <div class="stat-icon-wrapper stat-icon-tasks">🎯</div>
             <div class="stat-content"><div class="stat-val">${sessionsCount}</div><div class="stat-lbl">Focus Sessions Completed</div></div>
           </div>
           <div class="stat-box">
@@ -1192,16 +1192,16 @@ rest your eyes
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
           <div class="card">
-            <div class="card-header"><div class="card-title"><span class="card-title-icon">ðŸ“Š</span> 7-Day Study Minutes</div></div>
+            <div class="card-header"><div class="card-title"><span class="card-title-icon">📊</span> 7-Day Study Minutes</div></div>
             ${window.statsManager.renderActivityChartSVG()}
           </div>
           <div class="card">
-            <div class="card-header"><div class="card-title"><span class="card-title-icon">ðŸŸ©</span> Consistency Heatmap</div></div>
+            <div class="card-header"><div class="card-title"><span class="card-title-icon">🟩</span> Consistency Heatmap</div></div>
             ${window.statsManager.renderHeatmapGrid()}
           </div>
         </div>
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-title-icon">ðŸ“œ</span> Focus Session History</div></div>
+          <div class="card-header"><div class="card-title"><span class="card-title-icon">📜</span> Focus Session History</div></div>
           ${window.statsManager.renderSessionLogs()}
         </div>
       </div>
@@ -1213,7 +1213,7 @@ rest your eyes
         return `
       <div style="display: flex; flex-direction: column; gap: 24px; max-width: 780px;">
         <div class="card">
-          <div class="card-header"><div class="card-title"><span class="card-title-icon">ðŸ‘¤</span> Scholar Profile</div></div>
+          <div class="card-header"><div class="card-title"><span class="card-title-icon">👤</span> Scholar Profile</div></div>
           <form onsubmit="event.preventDefault(); window.app.handleSaveProfile(this);">
             <div style="display: flex; flex-direction: column; gap: 14px;">
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
@@ -1228,9 +1228,9 @@ rest your eyes
         <div class="card">
           <div class="card-header"><div class="card-title"><span class="card-title-icon">💾</span> Data Management</div></div>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <button class="btn btn-outline" onclick="window.settingsManager.exportDataFile()">Export Backup JSON ðŸ“¥</button>
-            <label class="btn btn-outline" style="cursor: pointer;">Import Backup JSON ðŸ“¤<input type="file" accept=".json" style="display: none;" onchange="window.settingsManager.importDataFile(this.files[0])"></label>
-            <button class="btn btn-outline" style="color: #C53030; border-color: #FEB2B2;" onclick="window.settingsManager.confirmResetDemo()">Reset to Demo Data âš ï¸</button>
+            <button class="btn btn-outline" onclick="window.settingsManager.exportDataFile()">Export Backup JSON 📥</button>
+            <label class="btn btn-outline" style="cursor: pointer;">Import Backup JSON 📤<input type="file" accept=".json" style="display: none;" onchange="window.settingsManager.importDataFile(this.files[0])"></label>
+            <button class="btn btn-outline" style="color: #C53030; border-color: #FEB2B2;" onclick="window.settingsManager.confirmResetDemo()">Reset to Demo Data ⚠️</button>
           </div>
         </div>
       </div>
@@ -1277,7 +1277,7 @@ rest your eyes
               <div>
                 <label style="font-weight: 700; font-size: 0.85rem; color: var(--color-forest-dark);">Priority</label>
                 <select name="priority" style="width: 100%; margin-top: 4px;">
-                  <option value="urgent">Urgent ðŸ”´</option><option value="high">High ðŸŸ </option><option value="medium" selected>Medium ðŸŸ¡</option><option value="low">Low ðŸŸ¢</option>
+                  <option value="urgent">Urgent 🔴</option><option value="high">High 🟠</option><option value="medium" selected>Medium 🟡</option><option value="low">Low 🟢</option>
                 </select>
               </div>
             </div>
@@ -1285,7 +1285,7 @@ rest your eyes
               <label style="font-weight: 700; font-size: 0.85rem; color: var(--color-forest-dark);">Subtasks (Comma separated)</label>
               <input type="text" name="subtasksRaw" placeholder="e.g. Read outline, Write first draft, Review citations" style="width: 100%; margin-top: 4px;">
             </div>
-            <button type="submit" class="btn btn-primary" style="margin-top: 8px;">Add to Planner ðŸŒ¿</button>
+            <button type="submit" class="btn btn-primary" style="margin-top: 8px;">Add to Planner 🌿</button>
           </div>
         </form>
       </div>
@@ -1320,10 +1320,10 @@ rest your eyes
 
         const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
-        let icon = 'ðŸŒ¿';
-        if (type === 'coin') icon = 'ðŸª™';
+        let icon = '🌿';
+        if (type === 'coin') icon = '🪙';
         else if (type === 'exp') icon = '✨';
-        else if (type === 'achievement') icon = 'ðŸ†';
+        else if (type === 'achievement') icon = '🏆';
 
         toast.innerHTML = `<div class="toast-icon">${icon}</div><div class="toast-body"><div class="toast-title">${title}</div><div class="toast-desc">${desc}</div></div>`;
         container.appendChild(toast);
@@ -1341,7 +1341,7 @@ rest your eyes
 
         modal.innerHTML = `
       <div class="modal-card" style="max-width: 580px; text-align: center;">
-        <div style="font-size: 3rem; margin-bottom: 8px;">☕ 🐱 ðŸ’»</div>
+        <div style="font-size: 3rem; margin-bottom: 8px;">☕ 🐱 💻</div>
         <h2 style="font-size: 1.8rem; color: var(--color-forest-dark);">Welcome to STUDYPET OS</h2>
         <p style="color: var(--color-muted-text); font-size: 0.95rem; margin-bottom: 24px;">
           <em>"Take a break. Grow Your Pet, Grow Yourself."</em><br>
@@ -1387,7 +1387,7 @@ rest your eyes
         if (window.soundEngine) window.soundEngine.playLevelUp();
         document.getElementById('onboarding-modal').classList.remove('active');
         this.renderAll();
-        this.showToast('Welcome to STUDYPET OS! ðŸŒ¿', `Ready to study with ${this.store.state.pet.name}!`, 'achievement');
+        this.showToast('Welcome to STUDYPET OS! 🌿', `Ready to study with ${this.store.state.pet.name}!`, 'achievement');
     }
 }
 
