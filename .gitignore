@@ -1,0 +1,10 @@
+# Backup files
+**/*backup*.js
+**/*Backup*.js
+
+# Temporary test files
+/scratch_test_verification.js
+
+# System files
+.DS_Store
+Thumbs.db

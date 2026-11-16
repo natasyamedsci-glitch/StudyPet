@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STUDYPET — Grow Your Pet, Grow Yourself</title>
+  <meta name="description" content="A gamified study life simulation platform combining virtual pet raising and evolution, academic planner, focus timer, calendar, and future-self letters.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/cozy-theme.css">
+  <link rel="stylesheet" href="styles/pet-world.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+
+  <div id="app-root">
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="app-sidebar">
+      <div class="brand-container">
+        <div class="brand-icon">🌱</div>
+        <div class="brand-info">
+          <h1>STUDYPET</h1>
+          <div class="tagline">Grow Your Pet, Grow Yourself</div>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <div class="nav-link active" data-view="home" onclick="window.app.navigateTo('home')">
+            <span class="nav-svg">🏡</span>
+            <span>My World</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" data-view="study-room" onclick="window.app.navigateTo('study-room')">
+            <span class="nav-svg">⏱️</span>
+            <span>Study Room</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" data-view="planner" onclick="window.app.navigateTo('planner')">
+            <span class="nav-svg">📝</span>
+            <span>Academic Planner</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" data-view="pet-evolution" onclick="window.app.navigateTo('pet-evolution')">
+            <span class="nav-svg">🐾</span>
+            <span>Pet & Evolution</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" data-view="shop" onclick="window.app.navigateTo('shop')">
+            <span class="nav-svg">🛍️</span>
+            <span>Shop & Inventory</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" data-view="quests" onclick="window.app.navigateTo('quests')">
+            <span class="nav-svg">📜</span>
+            <span>Quests & Badges</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" data-view="future-me" onclick="window.app.navigateTo('future-me')">
+            <span class="nav-svg">💌</span>
+            <span>Future Me</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" data-view="statistics" onclick="window.app.navigateTo('statistics')">
+            <span class="nav-svg">📊</span>
+            <span>Statistics</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" data-view="settings" onclick="window.app.navigateTo('settings')">
+            <span class="nav-svg">⚙️</span>
+            <span>Settings</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Sidebar Mini Pet Card -->
+      <div class="sidebar-pet-preview" id="sidebar-mini-pet" onclick="window.app.navigateTo('pet-evolution')">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </aside>
+
+    <!-- MAIN VIEW WRAPPER -->
+    <main class="main-wrapper">
+      <!-- Sticky Top Header Bar -->
+      <header class="top-bar">
+        <div class="page-title-box">
+          <h2 id="page-title">My World</h2>
+          <p id="page-greeting">Welcome back, Scholar! Ready to grow together?</p>
+        </div>
+
+        <div class="top-bar-actions">
+          <div class="currency-pill coins">
+            <span class="pill-icon">🪙</span>
+            <span id="top-bar-coins">145 🪙</span>
+          </div>
+
+          <div class="currency-pill streak">
+            <span class="pill-icon">🔥</span>
+            <span id="top-bar-streak">4 Days</span>
+          </div>
+
+          <button class="header-btn" id="header-sound-btn" onclick="window.app.toggleSound()" title="Toggle Sound">
+            🔔
+          </button>
+        </div>
+      </header>
+
+      <!-- Dynamic Viewport Area -->
+      <div class="content-area" id="view-container">
+        <!-- Views rendered here by app.js -->
+      </div>
+    </main>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION BAR -->
+  <nav class="mobile-nav-bar">
+    <div class="mobile-nav-item active" data-view="home" onclick="window.app.navigateTo('home')">
+      <span>🏡</span>
+      <span>World</span>
+    </div>
+    <div class="mobile-nav-item" data-view="study-room" onclick="window.app.navigateTo('study-room')">
+      <span>⏱️</span>
+      <span>Study</span>
+    </div>
+    <div class="mobile-nav-item" data-view="planner" onclick="window.app.navigateTo('planner')">
+      <span>📝</span>
+      <span>Planner</span>
+    </div>
+    <div class="mobile-nav-item" data-view="shop" onclick="window.app.navigateTo('shop')">
+      <span>🛍️</span>
+      <span>Shop</span>
+    </div>
+    <div class="mobile-nav-item" data-view="future-me" onclick="window.app.navigateTo('future-me')">
+      <span>💌</span>
+      <span>Future</span>
+    </div>
+  </nav>
+
+  <!-- FOCUS LOCK ZEN OVERLAY -->
+  <div class="focus-lock-overlay" id="focus-lock-overlay">
+    <div style="text-align: center; max-width: 440px;">
+      <div style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest); letter-spacing: 1px; text-transform: uppercase;">
+        🌿 Deep Focus Lock Activated
+      </div>
+      <div id="lock-subject-label" style="font-size: 1.25rem; font-weight: 800; color: var(--color-forest-dark); margin: 8px 0 16px 0;">
+        Focusing on: General Study
+      </div>
+      <div id="lock-pet-companion" style="width: 140px; height: 140px; margin: 0 auto 16px auto;"></div>
+      <div id="lock-timer-digits" style="font-family: var(--font-mono); font-size: 4.5rem; font-weight: 800; color: var(--color-forest-dark); line-height: 1;">
+        25:00
+      </div>
+      <p style="font-size: 0.88rem; color: var(--color-muted-text); margin: 18px 0 28px 0;">
+        Tab changes are monitored. Stay present with your companion. Press <strong>Escape</strong> or the exit button below when done.
+      </p>
+      <button class="btn btn-outline" onclick="window.studyTimer.toggleFocusLock()">
+        Exit Focus Lock ✕
+      </button>
+    </div>
+  </div>
+
+  <!-- APPLICATION MODAL CONTAINERS -->
+  <div class="modal-overlay" id="add-task-modal"></div>
+  <div class="modal-overlay" id="task-timeline-modal"></div>
+  <div class="modal-overlay" id="add-event-modal"></div>
+  <div class="modal-overlay" id="day-agenda-modal"></div>
+  <div class="modal-overlay" id="compose-letter-modal"></div>
+  <div class="modal-overlay" id="letter-read-modal"></div>
+  <div class="modal-overlay" id="rename-pet-modal"></div>
+  <div class="modal-overlay" id="session-complete-modal"></div>
+  <div class="modal-overlay" id="onboarding-modal"></div>
+  <div class="modal-overlay" id="sticky-note-modal"></div>
+  <div class="modal-overlay" id="crt-terminal-modal"></div>
+  <div class="modal-overlay" id="coffee-mini-game-modal"></div>
+  <div class="modal-overlay" id="hatching-modal"></div>
+  <div class="modal-overlay" id="wardrobe-modal"></div>
+
+  <!-- FULLSCREEN EVOLUTION CEREMONY -->
+  <div class="evolution-ceremony-modal" id="evolution-modal"></div>
+
+  <!-- SUBTLE AUTO-SAVE STATUS INDICATOR -->
+  <div id="save-status-indicator" class="save-status-indicator">✓ Progress Saved</div>
+
+  <!-- TOAST NOTIFICATIONS HUB -->
+  <div id="toast-container"></div>
+
+  <!-- JAVASCRIPT SYSTEM SCRIPTS (IN STRICT DEPENDENCY ORDER) -->
+  <script src="js/audio.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/pet-renderer.js"></script>
+  <script src="js/pet.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/quests.js"></script>
+  <script src="js/future-me.js"></script>
+  <script src="js/stats.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+

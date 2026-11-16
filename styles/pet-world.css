@@ -1,0 +1,920 @@
+/* ==========================================================================
+   STUDYPET — Retro 90s OS & Pixel Art Sanctuary Environment
+   Enhanced with:
+   - Dynamic Real-Time Day / Sunset / Night Window Sky
+   - Cassette Tape & Audio Spectrum Equalizer
+   - Interactive Desk Clutter (Sticky Notes, Mechanical Keyboard, CRT Minigame)
+   - Break-time Coffee Brewing Mini-Game
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen&family=VT323&display=swap');
+
+:root {
+  --os-window-bg: #C0C0C0;
+  --os-window-dark: #808080;
+  --os-window-light: #FFFFFF;
+  --os-window-deep: #000000;
+  --os-title-blue: #000080;
+  --os-title-blue-light: #1084D0;
+  --retro-night-sky: #131A35;
+  --retro-desk-wood: #2D3A4B;
+  --retro-pc-beige: #E6DFC5;
+  --retro-pc-shadow: #B8B097;
+  --retro-cat-white: #EFEFEF;
+  --retro-cat-shadow: #D2D2D8;
+}
+
+/* Retro OS Window Outer Shell */
+.retro-os-window {
+  background: var(--os-window-bg);
+  border: 3px solid;
+  border-color: var(--os-window-light) var(--os-window-dark) var(--os-window-dark) var(--os-window-light);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.45);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  position: relative;
+  font-family: 'VT323', monospace;
+}
+
+/* Retro Title Bar */
+.retro-os-titlebar {
+  background: linear-gradient(90deg, var(--os-title-blue) 0%, var(--os-title-blue-light) 100%);
+  color: #FFFFFF;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.5px;
+}
+
+.retro-os-title-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.retro-os-controls {
+  display: flex;
+  gap: 3px;
+}
+
+.retro-os-btn {
+  width: 16px;
+  height: 14px;
+  background: var(--os-window-bg);
+  border: 2px solid;
+  border-color: var(--os-window-light) var(--os-window-dark) var(--os-window-dark) var(--os-window-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #000;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.retro-os-btn:active {
+  border-color: var(--os-window-dark) var(--os-window-light) var(--os-window-light) var(--os-window-dark);
+}
+
+/* OS Sub-header / Status Message */
+.retro-os-subbanner {
+  background: var(--os-title-blue);
+  color: #FFFFFF;
+  padding: 4px 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.68rem;
+  border-bottom: 2px solid var(--os-window-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Window Canvas Workspace */
+.retro-canvas-workspace {
+  display: flex;
+  background: #181E34;
+  position: relative;
+  border: 2px solid;
+  border-color: var(--os-window-dark) var(--os-window-light) var(--os-window-light) var(--os-window-dark);
+  margin: 3px;
+  min-height: 400px;
+}
+
+/* Left MS Paint-style Tool Palette */
+.retro-paint-toolbox {
+  width: 58px;
+  background: var(--os-window-bg);
+  border-right: 2px solid var(--os-window-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 2px;
+  gap: 3px;
+  z-index: 10;
+}
+
+.retro-tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  width: 48px;
+}
+
+.retro-tool-btn {
+  width: 23px;
+  height: 23px;
+  background: var(--os-window-bg);
+  border: 2px solid;
+  border-color: var(--os-window-light) var(--os-window-dark) var(--os-window-dark) var(--os-window-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  cursor: pointer;
+  transition: transform 0.05s;
+}
+
+.retro-tool-btn:hover {
+  background: #D5D5D5;
+}
+
+.retro-tool-btn.active, .retro-tool-btn:active {
+  border-color: var(--os-window-dark) var(--os-window-light) var(--os-window-light) var(--os-window-dark);
+  background: #B0B0B0;
+}
+
+.retro-tool-rainbow {
+  width: 44px;
+  height: 20px;
+  margin-top: 6px;
+  border: 1px solid #000;
+  background: linear-gradient(180deg, #FF6B6B 0%, #FFD93D 33%, #6BCB77 66%, #4D96FF 100%);
+}
+
+.retro-brush-sizes {
+  width: 44px;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px;
+  background: var(--os-window-light);
+  border: 1.5px solid var(--os-window-dark);
+}
+
+.retro-brush-line { height: 2px; background: #000; }
+.retro-brush-line:nth-child(2) { height: 4px; }
+.retro-brush-line:nth-child(3) { height: 6px; }
+
+/* --------------------------------------------------------------------------
+   CENTER PIXEL ART STUDY SANCTUARY SCENE
+   -------------------------------------------------------------------------- */
+.retro-pixel-scene {
+  flex: 1;
+  position: relative;
+  background: #141B33;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  user-select: none;
+}
+
+/* Dynamic Real-Time Sky Window (Day / Sunset / Night) */
+.pixel-night-window {
+  position: absolute;
+  top: 18px;
+  right: 40px;
+  width: 250px;
+  height: 170px;
+  border: 6px solid #485773;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0,0,0,0.4);
+  overflow: hidden;
+  transition: background 1s ease;
+}
+
+.pixel-night-window.night {
+  background: #0B0E20;
+}
+
+.pixel-night-window.sunset {
+  background: linear-gradient(180deg, #3D2645 0%, #833953 50%, #E07A5F 100%);
+}
+
+.pixel-night-window.day {
+  background: linear-gradient(180deg, #4A90E2 0%, #87CEEB 70%, #E0F2FE 100%);
+}
+
+.pixel-vines {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.pixel-moon {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  box-shadow: -8px 5px 0 0 #F3D58A;
+  animation: moon-glow 4s ease-in-out infinite alternate;
+}
+
+.pixel-sun {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  width: 34px;
+  height: 34px;
+  background: #FFD700;
+  border-radius: 50%;
+  box-shadow: 0 0 18px #FFE066;
+  animation: sun-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes sun-pulse {
+  from { transform: scale(1); box-shadow: 0 0 14px #FFD700; }
+  to { transform: scale(1.08); box-shadow: 0 0 26px #FFEB3B; }
+}
+
+@keyframes moon-glow {
+  from { filter: drop-shadow(0 0 6px rgba(243, 213, 138, 0.4)); }
+  to { filter: drop-shadow(0 0 14px rgba(243, 213, 138, 0.8)); }
+}
+
+/* Twinkling Pixel Stars */
+.pixel-star {
+  position: absolute;
+  color: #FFF;
+  font-size: 10px;
+  animation: star-twinkle 2s infinite ease-in-out;
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Rain Effect on Window Glass */
+.pixel-rain-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  display: none;
+}
+
+.pixel-rain-container.active {
+  display: block;
+}
+
+.rain-drop {
+  position: absolute;
+  width: 2px;
+  height: 14px;
+  background: rgba(147, 181, 198, 0.65);
+  animation: rain-fall 0.8s linear infinite;
+}
+
+@keyframes rain-fall {
+  0% { transform: translateY(-20px); opacity: 0; }
+  30% { opacity: 0.8; }
+  100% { transform: translateY(180px); opacity: 0; }
+}
+
+/* Desk Surface */
+.pixel-desk-surface {
+  position: relative;
+  width: 100%;
+  height: 195px;
+  background: linear-gradient(180deg, #1A223B 0%, #171E36 100%);
+  border-top: 4px solid #2B3556;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 0 20px 10px 20px;
+  z-index: 5;
+}
+
+.pixel-rainbow-strip {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(90deg, #FF6B6B 0%, #FFD93D 25%, #6BCB77 50%, #4D96FF 75%, #9B51E0 100%);
+  opacity: 0.85;
+}
+
+.pixel-desk-plant {
+  position: absolute;
+  left: 30px;
+  bottom: 60px;
+  filter: drop-shadow(2px 4px 0px rgba(0,0,0,0.4));
+  animation: plant-sway 4s ease-in-out infinite alternate;
+  cursor: pointer;
+}
+
+@keyframes plant-sway {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(2deg); }
+}
+
+.pixel-mini-tamagotchi {
+  position: absolute;
+  left: 110px;
+  bottom: 45px;
+  background: #FFF;
+  border: 2px solid #000;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 2px 2px 0px #000;
+  animation: gentle-bob 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.pixel-desk-notebook {
+  position: absolute;
+  left: 175px;
+  bottom: 15px;
+  width: 65px;
+  height: 48px;
+  background: #4D4365;
+  border: 2px solid #1A1528;
+  border-radius: 3px;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+.pixel-desk-notebook::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 4px;
+  bottom: 4px;
+  width: 6px;
+  background: repeating-linear-gradient(180deg, #FFF 0px, #FFF 3px, #4D4365 3px, #4D4365 7px);
+}
+
+.pixel-desk-pen {
+  position: absolute;
+  left: 250px;
+  bottom: 25px;
+  width: 35px;
+  height: 4px;
+  background: #2563EB;
+  border: 1px solid #1E3A8A;
+  transform: rotate(25deg);
+}
+
+/* Center Cute Cat Companion Sitting on Desk */
+.pixel-cat-character-box {
+  position: absolute;
+  left: 45%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.pixel-mug-steam {
+  position: absolute;
+  top: -30px;
+  right: -5px;
+  display: flex;
+  gap: 3px;
+  pointer-events: none;
+}
+
+.steam-particle {
+  width: 4px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  animation: steam-rise 2s infinite ease-out;
+}
+
+.steam-particle:nth-child(2) { animation-delay: 0.6s; height: 16px; }
+.steam-particle:nth-child(3) { animation-delay: 1.2s; height: 10px; }
+
+@keyframes steam-rise {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  30% { opacity: 0.9; }
+  100% { transform: translateY(-24px) scaleX(1.8); opacity: 0; }
+}
+
+.pixel-speech-balloon {
+  position: absolute;
+  bottom: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
+  padding: 10px 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  line-height: 1.6;
+  color: #101010;
+  white-space: pre-line;
+  z-index: 20;
+  min-width: 170px;
+  animation: pop-pixel 0.25s ease-out;
+}
+
+.pixel-speech-balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 30px;
+  border-width: 9px 9px 0 0;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}
+
+@keyframes pop-pixel {
+  from { transform: translateX(-50%) scale(0.85); opacity: 0; }
+  to { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+/* CRT Computer Monitor & Keyboard */
+.pixel-crt-monitor {
+  position: absolute;
+  right: 50px;
+  bottom: 35px;
+  width: 115px;
+  height: 105px;
+  background: var(--retro-pc-beige);
+  border: 3px solid #2B2518;
+  box-shadow: inset 2px 2px 0px var(--os-window-light), 3px 3px 0px rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  cursor: pointer;
+}
+
+.pixel-crt-screen {
+  width: 82px;
+  height: 64px;
+  background: #253342;
+  border: 3px solid #161D26;
+  box-shadow: inset 0 0 8px rgba(0, 255, 180, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-screen-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  animation: crt-scan 3s linear infinite;
+}
+
+@keyframes crt-scan {
+  from { top: 0; }
+  to { top: 100%; }
+}
+
+.crt-sticky-note {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  width: 28px;
+  height: 28px;
+  background: #FFF176;
+  border: 1px solid #C7B538;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  transform: rotate(6deg);
+  cursor: pointer;
+  z-index: 10;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.pixel-mechanical-keyboard {
+  position: absolute;
+  right: 40px;
+  bottom: 8px;
+  width: 125px;
+  height: 24px;
+  background: var(--retro-pc-beige);
+  border: 2px solid #2B2518;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px;
+  z-index: 7;
+  cursor: pointer;
+}
+
+.keycap-press {
+  width: 8px;
+  height: 8px;
+  background: #D5CFBA;
+  border: 1px solid #787363;
+  transition: transform 0.05s;
+}
+
+.keycap-press:active {
+  transform: translateY(2px);
+  background: #B0A890;
+}
+
+.pixel-mouse {
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  width: 18px;
+  height: 24px;
+  background: var(--retro-pc-beige);
+  border: 2px solid #2B2518;
+  border-radius: 8px 8px 4px 4px;
+  z-index: 7;
+  cursor: pointer;
+}
+
+.pixel-mouse-cord {
+  position: absolute;
+  right: 22px;
+  bottom: 26px;
+  width: 20px;
+  height: 14px;
+  border-left: 2px solid #2B2518;
+  border-bottom: 2px solid #2B2518;
+  border-radius: 0 0 0 10px;
+}
+
+/* --------------------------------------------------------------------------
+   BOTTOM POP-UP RPG MENU (ITEMS, SAVE, SYSTEM, END)
+   -------------------------------------------------------------------------- */
+.retro-rpg-menu {
+  position: absolute;
+  bottom: 45px;
+  left: 65px;
+  background: var(--os-title-blue);
+  border: 2px solid;
+  border-color: var(--os-window-light) var(--os-window-dark) var(--os-window-dark) var(--os-window-light);
+  box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  gap: 2px;
+  z-index: 25;
+}
+
+.retro-rpg-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  color: #FFF;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.62rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.retro-rpg-menu-item:hover {
+  background: #FFD93D;
+  color: #000;
+  border-color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   RETRO OS BOTTOM TASKBAR
+   -------------------------------------------------------------------------- */
+.retro-os-taskbar {
+  background: var(--os-window-bg);
+  border-top: 2px solid var(--os-window-light);
+  padding: 5px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+}
+
+.retro-swatches-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--os-window-dark);
+  padding: 3px;
+  border: 1.5px solid;
+  border-color: var(--os-window-dark) var(--os-window-light) var(--os-window-light) var(--os-window-dark);
+}
+
+.retro-color-chip {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.retro-digital-clock {
+  background: #000;
+  color: #00FF66;
+  padding: 4px 10px;
+  border: 2px inset var(--os-window-dark);
+  font-family: 'VT323', monospace;
+  font-size: 1.35rem;
+  letter-spacing: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   CASSETTE TAPE & VISUAL AUDIO SPECTRUM DECK
+   -------------------------------------------------------------------------- */
+.retro-soundtrack-deck {
+  background: var(--os-window-bg);
+  border: 2px solid;
+  border-color: var(--os-window-light) var(--os-window-dark) var(--os-window-dark) var(--os-window-light);
+  padding: 14px 18px;
+  margin-top: 14px;
+  border-radius: 4px;
+}
+
+.cassette-visual-deck {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111827;
+  border: 2px inset var(--os-window-dark);
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Spinning Cassette Tape Reels */
+.cassette-tape-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cassette-reel {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #FFF;
+  border: 4px solid #4B5563;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cassette-reel::before {
+  content: '✦';
+  font-size: 10px;
+  color: #111827;
+}
+
+.cassette-reel.spinning {
+  animation: rotate-slow 2s linear infinite;
+}
+
+/* Retro Equalizer Spectrum Bars */
+.spectrum-bars-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 26px;
+}
+
+.eq-bar {
+  width: 6px;
+  background: #10B981;
+  border-radius: 1px;
+  transition: height 0.1s ease;
+  min-height: 4px;
+}
+
+.eq-bar:nth-child(even) {
+  background: #34D399;
+}
+
+/* Dual Layer Buttons Grid */
+.soundtrack-tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.soundtrack-btn {
+  background: var(--os-window-bg);
+  border: 2px solid;
+  border-color: var(--os-window-light) var(--os-window-dark) var(--os-window-dark) var(--os-window-light);
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  cursor: pointer;
+  color: #101010;
+  transition: all 0.1s;
+}
+
+.soundtrack-btn:hover {
+  background: #E0E0E0;
+}
+
+.soundtrack-btn.active {
+  background: #000080;
+  color: #FFF;
+  border-color: var(--os-window-dark) var(--os-window-light) var(--os-window-light) var(--os-window-dark);
+}
+
+/* --------------------------------------------------------------------------
+   BREAK TIME COFFEE-MAKING MINI-GAME MODAL
+   -------------------------------------------------------------------------- */
+.coffee-game-card {
+  text-align: center;
+  font-family: 'VT323', monospace;
+}
+
+.coffee-cup-preview {
+  width: 120px;
+  height: 120px;
+  margin: 14px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coffee-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.coffee-choice-btn {
+  background: var(--os-window-bg);
+  border: 2px solid;
+  border-color: var(--os-window-light) var(--os-window-dark) var(--os-window-dark) var(--os-window-light);
+  padding: 10px 8px;
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.coffee-choice-btn:hover {
+  background: #D5D5D5;
+}
+
+.coffee-choice-btn.selected {
+  background: #000080;
+  color: #FFF;
+}
+
+/* --------------------------------------------------------------------------
+   ONBOARDING COMPANION CHOICE CARDS
+   -------------------------------------------------------------------------- */
+.companion-choice-card {
+  background: var(--color-white);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.companion-choice-card:hover {
+  border-color: #8B5CF6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+}
+
+.companion-choice-card:focus {
+  outline: none;
+  border-color: #8B5CF6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.35);
+}
+
+.companion-choice-card.selected {
+  border-color: #8B5CF6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+  background: #FAF5FF;
+}
+
+.companion-card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #8B5CF6;
+  color: #FFF;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 99px;
+  display: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.companion-choice-card.selected .companion-card-badge {
+  display: block;
+}
+
+.companion-ref-thumbnail {
+  width: 100%;
+  height: 115px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-subtle);
+  margin-bottom: 10px;
+  background: #111827;
+}
+
+.companion-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.companion-card-emoji {
+  font-size: 1.6rem;
+}
+
+.companion-card-title {
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--color-forest-dark);
+}
+
+.companion-card-subtitle {
+  font-size: 0.72rem;
+  color: #8B5CF6;
+  font-weight: 700;
+}
+
+.companion-card-desc {
+  font-size: 0.8rem;
+  color: var(--color-muted-text);
+  line-height: 1.4;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.companion-card-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.companion-card-meta .meta-tag {
+  font-size: 0.68rem;
+  background: var(--color-warm-cream-alt);
+  color: var(--color-forest-dark);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
